@@ -1,5 +1,6 @@
 package br.com.alura.literalura.models;
 
+import br.com.alura.literalura.dtos.LivroDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +17,12 @@ public class Livro {
     private Integer quantidadeDownloads;
 
     public Livro() {}
+
+    public Livro(LivroDTO livro) {
+        this.titulo = livro.titulo();
+        this.idioma = livro.idiomas().get(0);
+        this.quantidadeDownloads = livro.quantidadeDownloads();
+    }
 
     public Long getId() {
         return id;
@@ -55,5 +62,15 @@ public class Livro {
 
     public void setQuantidadeDownloads(Integer quantidadeDownloads) {
         this.quantidadeDownloads = quantidadeDownloads;
+    }
+
+    @Override
+    public String toString() {
+        return "----- LIVRO ----" + "\n" +
+                "Título: " + titulo + "\n" +
+                "Autor: " + autor.getNome() + "\n" +
+                "Idioma: " + idioma + "\n" +
+                "Quantidade de Downloads: " + quantidadeDownloads + "\n" +
+                "----------";
     }
 }
