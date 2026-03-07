@@ -30,6 +30,8 @@ public class Principal {
                     "3 - Listar autores registrados\n" +
                     "4 - Listar autores vivos em um determinado ano\n" +
                     "5 - Listar livros em um determinado idioma\n" +
+                    "6 - Listar Top 10 livros mais baixados\n" +
+                    "7 - Exibir Estatísticas\n" +
                     "0 - Sair\n");
             System.out.print("Escolha o número da sua opção: ");
             opcao = leitura.nextInt();
@@ -48,6 +50,12 @@ public class Principal {
                     break;
                 case 5:
                     livroService.listarLivrosDeterminadoIdioma();
+                    break;
+                case 6:
+                    livroService.listarTop10LivrosMaisBaixados();
+                    break;
+                case 7:
+                    livroService.gerarEstatisticas();
                     break;
                 case 0:
                     System.out.println("Encerrando a aplicação...");
